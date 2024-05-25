@@ -6,17 +6,13 @@ const createUserSchema = joi.object().keys({
     password: joi.string().min(6).max(30).required()
 });
 
-let user1 = {
-    userName: "",
-    password: ""
-}
+
 
 module.exports = input = {
     createUser: async (req, res) => {
         try {
             const validate = await createUserSchema.validateAsync(req.body);
-            user1.userName = validate.userName;
-            user1.password = validate.password;
+        
 
             const user = userService.createuser(validate);//call ki takey services ko validate bhej sakey for filter/logic purposer 
 
